@@ -10,7 +10,8 @@ const server = http.createServer()
 const connection = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
-  database: process.env.DB_NAME
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASSWORD
 });
 
 let data = {
@@ -90,12 +91,10 @@ server.on('request', async (request, response) => {
     await fetchData(storyIds)
 
     if (data.missing.length) {
-      console.log('processng not found')
       await fetchData(data.missing)
-      response.end(JSON.stringify(data.missing))
-    } else {
-      response.end('done')
     }
+
+    response.end('done')
   }
 })
 

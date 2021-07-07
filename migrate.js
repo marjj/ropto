@@ -5,7 +5,8 @@ dotenv.config()
 const connection = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
-  database: process.env.DB_NAME
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASSWORD
 });
 
 
@@ -17,8 +18,8 @@ connection.query(`DROP TABLE IF EXISTS stories;`, (err) => {
 
 connection.query(`
   CREATE TABLE stories (
-    id int(10) unsigned NOT NULL AUTO_INCREMENT,
-    parent_id int(10) unsigned DEFAULT NULL,
+    id int(11) unsigned NOT NULL AUTO_INCREMENT,
+    parent_id int(11) unsigned DEFAULT NULL,
     created_by text,
     text text,
     title text,
@@ -30,7 +31,7 @@ connection.query(`
     UNIQUE KEY id (id),
     KEY parent_id (parent_id) USING BTREE,
     CONSTRAINT fk_parent_id FOREIGN KEY (parent_id) REFERENCES stories (id)
-  )`, (err) => {
+  ) ENGINE=InnoDB AUTO_INCREMENT=27756398 DEFAULT CHARSET=utf8;`, (err) => {
   if (err) {
     throw err.message
   }
