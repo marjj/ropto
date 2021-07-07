@@ -12,24 +12,18 @@ const connection = mysql.createConnection({
   user: process.env.DB_USER,
   database: process.env.DB_NAME
 });
-connection.query('truncate stories', (err, result, fields) => {
-  if (err) {
-    console.log(err)
-  } else {
-    console.log('table truncated')
-  }
-})
 
 let data = {
   missing: []  
 }
 function insert(values) {
   return new Promise((resolve, reject) => {
-    connection.query('INSERT INTO stories (id, data, parent_id, title, text, no_of_children, type, created_at) VALUES ?', [values], async (err) => {
+    let sql = 'INSERT INTO stories (id, parent_id, title, text, no_of_children, type, created_at) VALUES ?'
+    connection.query(sql, [values], async (err) => {
       if (err) {
         reject(err)
       }
-      resolve(1)
+      resolve(true)
     });
   })
 }
@@ -63,7 +57,6 @@ function fetchData(ids) {
     let values = results.map(res => {
       return [
         res.id,
-        JSON.stringify(res),
         res.parent ?? null,
         res.title,
         res.text,
@@ -86,7 +79,7 @@ function fetchData(ids) {
       await fetchData(children.splice(0, 1000))
     }
     
-    resolve(1)
+    resolve(true)
   })
 } 
 

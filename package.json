@@ -4,7 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "final": "node final.js"
+    "start": "npm run migrate && npm run test",
+    "migrate": "node migrate.js",
+    "test": "node final.js"
   },
   "author": "",
   "license": "ISC",
