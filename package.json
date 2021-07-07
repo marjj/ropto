@@ -8,8 +8,7 @@
   },
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "dependencies": {
     "axios": "^0.21.1",
     "dotenv": "^10.0.0",

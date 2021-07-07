@@ -1,7 +1,3 @@
-// import * as http from 'http'
-// import * as mysql from 'mysql2'
-// import axios from 'axios'
-// import * as dotenv from "dotenv";
 const http = require('http')
 const mysql = require('mysql2')
 const axios = require('axios')
