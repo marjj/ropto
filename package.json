@@ -4,10 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "tsc app4.ts && npm run dev",
-    "dev": "node app4.js",
-    "final": "tsc final.ts && npm run final-js",
-    "final-js": "node final.js"
+    "final": "node final.js"
   },
   "author": "",
   "license": "ISC",
