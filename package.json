@@ -1,0 +1,23 @@
+{
+  "name": "ropto",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "tsc app4.ts && npm run dev",
+    "dev": "node app4.js",
+    "final": "tsc final.ts && npm run final-js",
+    "final-js": "node final.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "dotenv": "^10.0.0",
+    "http": "0.0.1-security",
+    "https": "^1.0.0",
+    "mysql2": "^2.2.5"
+  }
+}
